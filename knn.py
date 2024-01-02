@@ -1,5 +1,3 @@
-# app.py
-
 import streamlit as st
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
@@ -19,11 +17,46 @@ def evaluate_model(model, X_test, y_test):
     return accuracy
 
 def main():
-    st.title("Aplikasi KNN dengan Streamlit")
+    st.title("Estimasi Pasien Yang Menderita Kanker Paru-Paru")
 
     # Tambahkan elemen-elemen UI
-    st.sidebar.header("Pengaturan Model")
+    st.sidebar.header("Navigasi")
     k_value = st.sidebar.slider("Jumlah Tetangga (k)", 1, 10, 3)
+    st.write('***Selain input umur pasien kita hanya menginput 1 dan 2. 1=NO & 2=YES***')
+    col1, col2 = st.columns(2)
+
+    with col1 :
+        AGE = st.slider('Input umur pasien', 1, 80)
+
+    with col2 :
+        SMOKING = st.number_input('Apakah pasien merokok?')
+
+    with col1 :
+        YELLOW_FINGERS = st.number_input('Apakah pasien jari pasien kuning?')
+
+    with col2 :
+        ANXIETY = st.number_input('Apakah pasien mempunyai kecemasan berlebih?')
+
+    with col1 :
+        PEER_PRESSURE = st.number_input('Apakah pasien mempunyai tekanan dari teman sebaya?')
+
+    with col2 :
+        COUGHING = st.number_input('Apakah pasien batuk-batuk?')
+
+    with col1 :
+        SHORTNESS_OF_BREATH = st.number_input('Apakah pasien sesak nafas?')
+
+    with col2 :
+        SWALLOWING_DIFFICULTY = st.number_input('Apakah pasien kesulitan menelan?')
+
+    with col1 :
+        CHEST_PAIN = st.number_input('Apakah pasien nyeri dada?')
+
+    with col2 :
+        CHRONIC_DISEASE = st.number_input('Apakah pasien mempunyai penyakit kronis?')
+
+    with col1 :
+        WHEEZING = st.number_input('Apakah pasien mengi (Napas Berbunyi)?')
 
     # Muat dataset (ganti dengan dataset Anda)
     # Misalnya, Anda dapat menggunakan dataset iris untuk contoh
